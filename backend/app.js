@@ -4,8 +4,9 @@ const helmet = require("helmet");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const mongoSanitize = require("express-mongo-sanitize");
-
-const path = require('path') // Para acessar file system
+const globalErrorHandler = require("./controllers/errorController")
+const path = require('path'); // Para acessar file system
+const AppError = require("./utils/appError");
 
 const PORT = process.env.PORT || 4000;
 const app = express();
@@ -31,4 +32,13 @@ app.use(express.json({limit: "10kb"})) // Para proteger o servidor
 
 app.use(mongoSanitize()) //Para evitar ataques de query selector
 
+// users route
+
+// posts route
+
+app.all("*", (req, res, next) => {
+  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404))
+})
+
+app.use(globalErrorHandler)
 module.exports = app;
