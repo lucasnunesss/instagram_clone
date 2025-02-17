@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React from 'react'
 
 const Hero = () => {
@@ -22,6 +23,12 @@ const Hero = () => {
             <p className='text-xs md:text-[15px] text-gray-500'>Boas Avaliações</p>
           </div>
         </div>
+      </div>
+
+      <div className='relative'>
+        <Image src={"/profile4.png"} alt='profile' className='w-[500px] h-[600px]' width={200} height={200} sizes={'w-[500px] h-[600px]'}  />
+        <Image src={"/star.png"} className='w-[70px] sm:w-[100px] absolute top-[60px] right-6' width={200} height={200} alt='star' />
+        <Image src={"/star.png"} className='w-[50px] sm:w-[70px] absolute top-[230px] left-[0px] sm:left-[-30px]' width={200} height={200} alt='star' />
       </div>
     </main>
   )
